@@ -23,10 +23,10 @@ WIN_LINE_COLOR = (255, 215, 0)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Крестики-Нолики")
 
-# Загрузка звука для хода
+
 try:
-    # Загружаем звук для хода (теперь это звук хода, а не победы)
-    move_sound = pygame.mixer.Sound("victory.wav")  # Используем тот же файл, но для хода
+    
+    move_sound = pygame.mixer.Sound("victory.wav")  
     print("Звук хода загружен успешно!")
 except Exception as e:
     print(f"Не удалось загрузить звуковой файл: {e}")
@@ -176,17 +176,17 @@ def make_move(row, col):
     global current_player
     
     if board[row][col] == '' and not game_over:
-        # Ставим символ на доску
+
         board[row][col] = current_player
         
-        # ВОТ ИЗМЕНЕНИЕ: проигрываем звук при КАЖДОМ ходе
+
         if move_sound:
             move_sound.play()
         
-        # Проверяем, не закончилась ли игра
+ 
         check_winner()
         
-        # Меняем игрока, если игра продолжается
+        
         if not game_over:
             current_player = 'O' if current_player == 'X' else 'X'
 
@@ -232,3 +232,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
